@@ -1,0 +1,68 @@
+{
+  "name": "electronpro",
+  "version": "1.0.0",
+  "description": "PCMCIA DOWNLOADER PARA EXPERTOS",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development electron src/index.js",
+    "lint": "standard",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "Sebastian Rojas Ardila",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^5.1.1",
+    "electron-compile": "^6.4.3",
+    "electron-debug": "^1.4.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "filesize": "^3.6.0",
+    "fs-extra": "^5.0.0",
+    "jquery": "^3.3.1",
+    "node-powershell": "^3.3.1",
+    "usb-detection": "^2.1.0",
+    "username": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "devtron": "^1.4.0",
+    "electron-forge": "^5.2.2",
+    "electron-prebuilt-compile": "2.0.4"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "asar": true
+      },
+      "electronWinstallerConfig": {
+        "name": "electronpro"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "electronpro"
+      }
+    }
+  }
+}

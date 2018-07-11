@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PCMCIA DOWNLOADER</title>
+    <link rel="stylesheet" href="../assets/css/photon.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="frontend.js" type="text/javascript"></script>
+    <script src="lib/filterous2-2.0.0.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="window">
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <ul class="list-group">
+              <li class="list-group-header">
+                <img  src="../assets/img/AvaLogo.png" width="70" height="70">
+                <p class="important">Bienvenido </p>
+                <!-- <input id="search-box" class="form-control" type="text" placeholder="Buscando imagen"> -->
+              </li>
+               <!-- <li class="list-group-item selected">
+                <img class="img-circle media-object pull-left" src="../assets/img/B787.jpg" width="32" height="32">
+                <div class="media-body">
+                  <strong>B787.jpg</strong>
+                  <p>2 MB</p>
+                </div>
+              </li> -->
+            </ul>
+          </div>
+          <div class="pane">
+            <div class="image-view full-height">
+              <header class="toolbar toolbar-header image-toolbar">
+                <div class="toolbar-actions">
+                  <div class="btn-group">
+                  <button id="open-directory" class="btn btn-default">
+                    <span class="icon icon-folder"></span>
+                    Buscar ubicación de tarjeta
+                  </button>
+                </div>
+                <button id="open-directory" class="btn btn-default pull-right">
+                  <span class="icon icon-book-open"></span>
+                  Manual de Uso
+                </button>
+              </div>
+              </header>
+              <h4>Complete toda la información necesaria en los siguientes campos.</h4>
+              <form>
+                <label><b>Parte Numero P/N</b></label>
+                <select class="form-control">
+                  <option>PCM-AFSE-MG01</option>
+                  <option>512MB PCMCIA</option>
+                  <option>189381028</option>
+                  <option>201584905-0101</option>
+                </select>
+                <div class="form-group">
+                  <label><b>Serie Numero S/N</b></label>
+                  <input type="text" class="form-control" placeholder="S/N">
+                </div>
+                <label><b>Base de descarga</b></label>
+                <select class="form-control">
+                  <option>BOG</option>
+                  <option>MDE</option>
+                  <option>CLO</option>
+                  <option>CTG</option>
+                  <option>ADZ</option>
+                  <option>EJA</option>
+                  <option>BAQ</option>
+                  <option>SMR</option>
+                </select>
+                <p>
+                </p>
+              </form>
+              <button id="upload-data" class="btn btn-default btn-large">
+                <span class="icon icon-upload-cloud "></span>   Subir información   </button>
+                <div id="ACTail">
+
+                </div>
+            </div>
+          </div>
+    </div>
+    <footer class="toolbar toolbar-footer">
+      <h1 class="title">Hola</h1>
+    </footer>
+  </div>
+  </body>
+</html>
+
+<!-- <script>
+const username = require('username');
+
+
+  username().then(username => {
+      const UN = username
+      console.log(username);
+  });
+</script> -->
