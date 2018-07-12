@@ -9,10 +9,15 @@ function clearFile(){
 }
 
 function ACTail(files){
+// Reiniciar una division para que quede en blanco
+  const FilesList = document.querySelector('#ACTail')
+  FilesList.innerHTML = '';
+
 
   let A32S = false
   let A330 = false
   let ATR = false
+  let EMR = false
 
   console.log(files)
   let posMSG
@@ -29,9 +34,9 @@ function ACTail(files){
     }
   }
   if (A32S == true) {
-    const FilesList = document.querySelector('#ACTail')
+
     const node = `<h1><b>Matricula</b></h1>
-                  <h2 id="ACTail">${name.substring(1, 7)}</h2>`
+                  <h2 id="AC">${name.substring(1, 7)}</h2>`
     FilesList.insertAdjacentHTML('beforeend', node)
     console.log(name.substring(1, 7));
   }
