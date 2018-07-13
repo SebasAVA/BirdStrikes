@@ -57,6 +57,7 @@ const username = require('username');
 
 //pedrotoniel12@hotmail.com Avianca2017++
 ipcMain.on('open-directory', (event) => {
+  console.log("Seleccionado Directorio");
   dialog.showOpenDialog(win, {
     title: 'Seleccione la unidad de la PCMCIA',
     buttonLabel: 'Seleccionar esta unidad',
@@ -78,4 +79,8 @@ ipcMain.on('open-directory', (event) => {
     })
   }
 })
+})
+
+ipcMain.on('upload-data', (event) => {
+console.log("Subiendo Data");
 })
