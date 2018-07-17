@@ -108,8 +108,9 @@ ps.addCommand("Get-Process -Name electron")
 
 function setIpc(){
   ipcRenderer.on('load-files',(event,allFiles) => {
-    clearFile()
-    loadData(allFiles)
+    clearFile();
+    uploadData(allFiles);
+    loadData(allFiles);
     console.log(allFiles);
   })
 }
@@ -118,7 +119,38 @@ function openDirectory(){
   ipcRenderer.send('open-directory')
 }
 
+function uploadData(files)
+{
+  cleaning(files);
+  console.log("Upload Data");
+}
+
+function cleaning(files)
+{
+  console.log(files);
+  for (var i = 0; i < files.length; i++) {
+    console.log(files[i].filename);
+  }
+
+
+//   var filepath = "F:/Avianca.png";// Previously saved path somewhere
+//
+//   if (fs.existsSync(filepath)) {
+//     fs.unlink(filepath, (err) => {
+//         if (err) {
+//             alert("An error ocurred updating the file" + err.message);
+//             console.log(err);
+//             return;
+//         }
+//         console.log("File succesfully deleted");
+//     });
+// } else {
+//     alert("This file doesn't exist, cannot delete");
+// }
+}
+
 module.exports = {
   setIpc: setIpc,
-  openDirectory: openDirectory
+  openDirectory: openDirectory,
+  uploadData: uploadData
 }

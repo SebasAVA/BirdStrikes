@@ -80,7 +80,3 @@ ipcMain.on('open-directory', (event) => {
   }
 })
 })
-
-ipcMain.on('upload-data', (event) => {
-console.log("Subiendo Data");
-})
