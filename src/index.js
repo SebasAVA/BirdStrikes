@@ -22,7 +22,7 @@ app.on('ready', () => {
     height: 550,
     width: 900,
     minWidth: 900,
-    minHeight: 500,
+    minHeight: 650,
     center: true,
     show: false,
     title: 'PCMCIA-DOWNLOADER'
@@ -75,7 +75,7 @@ ipcMain.on('open-directory', (event) => {
         let size = filesize(stats.size,{round: 0})
         allFiles.push({filename: files[i] , src:filePath, size: size})
       }
-      event.sender.send('load-files', allFiles)
+      event.sender.send('load-files', allFiles, folderPaths)
     })
   }
 })

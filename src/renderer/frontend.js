@@ -29,7 +29,6 @@ username().then(username => {
     //=> 'sindresorhus'
 });
 
-
 //C:\Users\jsrojasa\Documents\Archivos Prueba\PCMCIA
 
 // drivelist.list((error, drives) => {
