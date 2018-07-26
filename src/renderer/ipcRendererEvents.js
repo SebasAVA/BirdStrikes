@@ -1,8 +1,14 @@
 import {ipcRenderer} from 'electron'
+import {deleteFile, deleteDir, compressDir} from './filesManager.js'
 const fs = require('fs')
 
 var Unidad;
-var Archivos;
+var Archivos = [];
+let A32S = false;
+let A330 = false;
+let ATR = false;
+let EMR = false;
+
 
 function setIpc(){
   ipcRenderer.on('load-files',(event,allFiles,folderPaths) => {
@@ -34,21 +40,15 @@ function cleaning(files, folderPaths)
         FinalFiles.push({filename: files[i].filesname, src: files[i].src});
     }
     else {
-
       if (fs.lstatSync(files[i].src).isFile()) {
-        fs.unlink(files[i].src, (err) => {
-            if (err) throw err;
-            console.log('successfully deleted');
-          });
+         deleteFile(files[i])
       }
       else if (fs.lstatSync(files[i].src).isDirectory()) {
-        var rimraf = require('rimraf');
-        rimraf(files[i].src, function () { console.log('done'); });
+         deleteDir(files[i].src)
       }
       }
 
 }
-console.log(FinalFiles);
 }
 // var FinalFiles = fs.readdirSync(folderPaths[0]);
 // console.log(FinalFiles);
@@ -59,13 +59,6 @@ function ACTail(files){
 // Reiniciar una division para que quede en blanco
   const FilesList = document.querySelector('#ACTail')
   FilesList.innerHTML = '';
-
-
-  let A32S = false
-  let A330 = false
-  let ATR = false
-  let EMR = false
-
   console.log(files)
   let posMSG
 
@@ -95,23 +88,6 @@ function ACTail(files){
   }
 }
 
-////////////////////////////////////////////////////
-/**
- * readTextFile read data from file
- * @param  string   filepath   Path to file on hard drive
- * @return string              String with file data
- */
-function readTextFile(filepath) {
-	var str = "";
-	var txtFile = new File([""],filepath);
-	txtFile.open("r");
-	while (!txtFile.eof) {
-		// read each line of text
-		str += txtFile.readln() + "\n";
-	}
-	return str;
-}
-
 function loadData (files){
   const FilesList = document.querySelector('ul.list-group')
                 for (let i = 0; i < files.length; i++) {
@@ -132,48 +108,28 @@ function loadData (files){
     Archivos = files;
 }
 
-const $ = require('jquery');
-const powershell = require('node-powershell');
+function uploadData()
+{
+  console.log("Estos son los archivos en Upload Data");
+  console.log(Archivos);
+  if (A32S) {
+    console.log("Subiendo un 32S");
+    compressDir(Archivos[0].src)
 
-// Testing PowerShell
-$(document).ready(() => {
+  }
+  else if (A330) {
 
-  // Create the PS Instance
-  let ps = new powershell({
-      executionPolicy: 'Bypass',
-      noProfile: true
-  })
+  }
+}
 
-  // Load the gun
-ps.addCommand("Get-Process -Name electron")
-
-  // Pull the Trigger
-  ps.invoke()
-  .then(output => {
-      console.log(output)
-  })
-  .catch(err => {
-      console.error(err)
-      ps.dispose()
-  })
-
-})
 
 function openDirectory(){
   ipcRenderer.send('open-directory')
 }
 
-function uploadData(files)
-{
-  console.log("Estos son los archivos en Upload Data");
-  console.log(Archivos[1].filename);
-}
 
-function formatear(path)
-{
-    var rimraf = require('rimraf');
-rimraf(files[i].src, function () { console.log('Formateado'); });
-}
+
+
 
 
 //   var filepath = "F:/Avianca.png";// Previously saved path somewhere
