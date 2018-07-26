@@ -1,5 +1,5 @@
 import {ipcRenderer} from 'electron'
-import {deleteFile, deleteDir, compressDir} from './filesManager.js'
+import {deleteFile, deleteDir, compressDir, copyREPS, formatear} from './filesManager.js'
 const fs = require('fs')
 
 var Unidad;
@@ -8,6 +8,7 @@ let A32S = false;
 let A330 = false;
 let ATR = false;
 let EMR = false;
+var ACTAIL;
 
 
 function setIpc(){
@@ -50,6 +51,7 @@ function cleaning(files, folderPaths)
 
 }
 }
+//Importante SERVIRA PARA ACTUALIZAR LAS MATRICULAS Y Saber el  nombre de los archivos finales
 // var FinalFiles = fs.readdirSync(folderPaths[0]);
 // console.log(FinalFiles);
 
@@ -67,6 +69,7 @@ function ACTail(files){
     if(name.startsWith("_") && (name.endsWith(".QAR")||name.endsWith(".REC")||name.endsWith(".REP") ))
     {
           A32S = true
+          // fixACTail()
           break;
     }
     else if (name.startsWith("MSG")) {
@@ -75,7 +78,7 @@ function ACTail(files){
     }
   }
   if (A32S == true) {
-
+    ACTAIL = name.substring(1, 7);
     const node = `<h1><b>Matricula</b></h1>
                   <h2 id="AC">${name.substring(1, 7)}</h2>`
     FilesList.insertAdjacentHTML('beforeend', node)
@@ -114,12 +117,24 @@ function uploadData()
   console.log(Archivos);
   if (A32S) {
     console.log("Subiendo un 32S");
-    compressDir(Archivos[0].src)
-
+    for (var i = 0; i < Archivos.length; i++) {
+    var name = Archivos[i]
+    if(name.filename.endsWith(".REC"))
+    {
+      compressDir(name.src,ACTAIL)
+      console.log("YA TERMINO DE COMPRIMIR");
+    }
+    else if(name.filename.endsWith(".REP"))
+    {
+      copyREPS(name.src,ACTAIL)
+      console.log("YA TERMINO DE SUBIR EL REPORTE");
+    }
+  }
   }
   else if (A330) {
 
   }
+  // formatear(Unidad)
 }
 
 
