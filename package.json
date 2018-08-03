@@ -17,6 +17,7 @@
     "cross-env": "^5.1.1",
     "electron-compile": "^6.4.3",
     "electron-debug": "^1.4.0",
+    "electron-progressbar": "^1.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "filesize": "^3.6.0",
     "fs-extra": "^5.0.0",

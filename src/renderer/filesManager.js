@@ -1,3 +1,4 @@
+
 function fleet(files){
   console.log("Esta es una flota normal");
 }
@@ -82,6 +83,7 @@ function compressDir(DirC, Tail)
     .then(output => {
         console.log("Copiado en DATA");
         console.log(output)
+        return true;
     })
     .catch(err => {
         console.error(err)
@@ -91,7 +93,7 @@ function compressDir(DirC, Tail)
   })
 }
 
-function copyREPS(DirRep,Tail)
+function copyREPS(U,DirRep,Tail)
 {
   var date = new Date();
   var year = date.getFullYear();
@@ -125,10 +127,12 @@ function copyREPS(DirRep,Tail)
   ps.addCommand(" Copy-Item -Path "+ DirRep +" -Destination //fscav-segoperfs/Data/Original_Data/REP/"+Tail+"/"+year+"-"+month+"-"+day+" -recurse -Force")
 
     // Pull the Trigger
+    let result = await ps.invoke();
     ps.invoke()
     .then(output => {
         console.log("Copiado Reportes");
         console.log(output)
+        formatear(U)
     })
     .catch(err => {
         console.error(err)
@@ -168,6 +172,8 @@ function formatear(path)
 
   })
 }
+
+
 
 module.exports = {
   deleteFile: deleteFile,

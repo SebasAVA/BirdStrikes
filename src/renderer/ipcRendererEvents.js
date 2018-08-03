@@ -2,6 +2,7 @@ import {ipcRenderer} from 'electron'
 import {deleteFile, deleteDir, compressDir, copyREPS, formatear} from './filesManager.js'
 const fs = require('fs')
 
+
 var Unidad;
 var Archivos = [];
 let A32S = false;
@@ -9,6 +10,7 @@ let A330 = false;
 let ATR = false;
 let EMR = false;
 var ACTAIL;
+var Finish = false;
 
 
 function setIpc(){
@@ -19,6 +21,7 @@ function setIpc(){
     console.log(allFiles);
   })
 }
+
 
 function clearFile(){
   const oldFile = document.querySelectorAll('li.list-group-item')
@@ -122,12 +125,10 @@ function uploadData()
     if(name.filename.endsWith(".REC"))
     {
       compressDir(name.src,ACTAIL)
-      console.log("YA TERMINO DE COMPRIMIR");
     }
     else if(name.filename.endsWith(".REP"))
     {
-      copyREPS(name.src,ACTAIL)
-      console.log("YA TERMINO DE SUBIR EL REPORTE");
+      copyREPS(Unidad,name.src,ACTAIL)
     }
   }
   }
@@ -141,10 +142,6 @@ function uploadData()
 function openDirectory(){
   ipcRenderer.send('open-directory')
 }
-
-
-
-
 
 
 //   var filepath = "F:/Avianca.png";// Previously saved path somewhere
