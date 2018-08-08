@@ -127,7 +127,6 @@ function copyREPS(U,DirRep,Tail)
   ps.addCommand(" Copy-Item -Path "+ DirRep +" -Destination //fscav-segoperfs/Data/Original_Data/REP/"+Tail+"/"+year+"-"+month+"-"+day+" -recurse -Force")
 
     // Pull the Trigger
-    let result = await ps.invoke();
     ps.invoke()
     .then(output => {
         console.log("Copiado Reportes");
@@ -166,6 +165,10 @@ function formatear(path)
         console.log(output)
     })
     .catch(err => {
+      const StatusGUI = document.querySelector('#Status')
+      StatusGUI.innerHTML = '';
+      const nodeStatus = `<h2 id="Sta">Ya se Subio la información</h2>`
+      StatusGUI.insertAdjacentHTML('beforeend', nodeStatus)
         console.error(err)
         ps.dispose()
     })

@@ -116,6 +116,11 @@ function loadData (files){
 
 function uploadData()
 {
+  const StatusGUI = document.querySelector('#Status')
+  StatusGUI.innerHTML = '';
+  const nodeStatus = `<h2 id="Sta">Subiendo Archivo, no retire la tarjeta</h2>`
+  StatusGUI.insertAdjacentHTML('beforeend', nodeStatus)
+
   console.log("Estos son los archivos en Upload Data");
   console.log(Archivos);
   if (A32S) {
