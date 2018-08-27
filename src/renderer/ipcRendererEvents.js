@@ -1,5 +1,7 @@
 import {ipcRenderer} from 'electron'
-import {deleteFile, deleteDir, compressDir, copyREPS, formatear} from './filesManager.js'
+import {deleteFile, deleteDir, compressDir, copyREPS, formatear, fixACTail, readPathU} from './filesManager.js'
+import path from 'path'
+import filesize from 'filesize'
 const fs = require('fs')
 
 
@@ -72,7 +74,7 @@ function ACTail(files){
     if(name.startsWith("_") && (name.endsWith(".QAR")||name.endsWith(".REC")||name.endsWith(".REP") ))
     {
           A32S = true
-          // fixACTail()
+          fixACTail(Unidad)
           break;
     }
     else if (name.startsWith("MSG")) {
@@ -81,7 +83,14 @@ function ACTail(files){
     }
   }
   if (A32S == true) {
-    ACTAIL = name.substring(1, 7);
+    if (name.substring(1,7).includes("-")) {
+      console.log("Tiene GUION");
+      console.log(name.substring(1, 7).replace('-',''));
+      ACTAIL = name.substring(1, 7).replace('-','') ;
+    }
+    else{
+      console.log("No tiene Guion");
+    ACTAIL = name.substring(1, 7);}
     const node = `<h1><b>Matricula</b></h1>
                   <h2 id="AC">${name.substring(1, 7)}</h2>`
     FilesList.insertAdjacentHTML('beforeend', node)
@@ -110,23 +119,29 @@ function loadData (files){
                   FilesList.insertAdjacentHTML('beforeend', node)
                 }
                 }
-    ACTail(files)
+    let ACFiles = []
+    ACFiles = readPathU(Unidad);
+    ACTail(ACFiles)
     Archivos = files;
 }
 
+
+
 function uploadData()
 {
+  var UPFiles = readPathU(Unidad)
+
   const StatusGUI = document.querySelector('#Status')
   StatusGUI.innerHTML = '';
   const nodeStatus = `<h2 id="Sta">Subiendo Archivo, no retire la tarjeta</h2>`
   StatusGUI.insertAdjacentHTML('beforeend', nodeStatus)
 
   console.log("Estos son los archivos en Upload Data");
-  console.log(Archivos);
+  console.log(UPFiles);
   if (A32S) {
     console.log("Subiendo un 32S");
-    for (var i = 0; i < Archivos.length; i++) {
-    var name = Archivos[i]
+    for (var i = 0; i < UPFiles.length; i++) {
+    var name = UPFiles[i]
     if(name.filename.endsWith(".REC"))
     {
       compressDir(name.src,ACTAIL)
@@ -149,24 +164,39 @@ function openDirectory(){
 }
 
 
-//   var filepath = "F:/Avianca.png";// Previously saved path somewhere
-//
-//   if (fs.existsSync(filepath)) {
-//     fs.unlink(filepath, (err) => {
-//         if (err) {
-//             alert("An error ocurred updating the file" + err.message);
-//             console.log(err);
-//             return;
-//         }
-//         console.log("File succesfully deleted");
-//     });
-// } else {
-//     alert("This file doesn't exist, cannot delete");
-// }
+
+function NewRead ()
+{
+  const StatusGUI = document.querySelector('#Status')
+  StatusGUI.innerHTML = '';
+  let files = [];
+  let NRFiles = [];
+  console.log(Unidad);
+  files = fs.readdirSync(Unidad)
+  for (var i = 0; i < files.length; i++) {
+    let filePath = path.join(Unidad,files[i])
+    console.log(filePath);
+    let stats = fs.statSync(filePath)
+    let size = filesize(stats.size,{round: 0})
+    NRFiles.push({filename: files[i] , src:filePath, size: size})
+  }
+   Archivos = [];
+   A32S = false;
+   A330 = false;
+   ATR = false;
+   EMR = false;
+   Finish = false;
+   let folderPath =  [Unidad]
+   clearFile();
+   cleaning(NRFiles, folderPath);
+   loadData(NRFiles);
+}
+
 
 
 module.exports = {
   setIpc: setIpc,
   openDirectory: openDirectory,
-  uploadData: uploadData
+  uploadData: uploadData,
+  NewRead: NewRead
 }

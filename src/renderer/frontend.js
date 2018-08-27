@@ -1,13 +1,14 @@
 import url from 'url'
 import path from 'path'
 import applyFilter from './filters'
-import { setIpc, openDirectory, uploadData } from './ipcRendererEvents'
+import { setIpc, openDirectory, uploadData, NewRead } from './ipcRendererEvents'
 
 window.addEventListener('load', () => {
   setIpc()
   addImageEvents()
   buttonEvent('open-directory',  openDirectory)
   buttonEvent('upload-data', uploadData)
+  buttonEvent('new-read', NewRead)
 })
 
 

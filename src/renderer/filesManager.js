@@ -1,3 +1,6 @@
+const fs = require('fs')
+import path from 'path'
+import filesize from 'filesize'
 
 function fleet(files){
   console.log("Esta es una flota normal");
@@ -176,6 +179,39 @@ function formatear(path)
   })
 }
 
+  function readPathU(pathDIR)
+{
+  console.log("Funcion readPathU");
+  let files = []
+  let ActFiles = []
+  files = fs.readdirSync(pathDIR)
+  for (var i = 0; i < files.length; i++) {
+    let filePath = path.join(pathDIR,files[i])
+    console.log(filePath);
+    let stats = fs.statSync(filePath)
+    let size = filesize(stats.size,{round: 0})
+    ActFiles.push({filename: files[i] , src:filePath, size: size})
+  }
+
+  return ActFiles
+}
+
+function fixACTail(Uni){
+  let FixFiles = []
+  FixFiles = readPathU(Uni);
+  const Renamer = require('renamer')
+  const renamer = new Renamer()
+
+  for (var i = 0; i < FixFiles.length; i++) {
+    // console.log(FixFiles[i].src);
+    // console.log(FixFiles[i].src.replace('-',''));
+    fs.rename(FixFiles[i].src, FixFiles[i].src.replace('-',''), function (err) {
+      if (err) throw err;
+      console.log('renamed complete');
+    });
+  }
+}
+
 
 
 module.exports = {
@@ -183,5 +219,7 @@ module.exports = {
   deleteDir: deleteDir,
   compressDir:compressDir,
   copyREPS:copyREPS,
-  formatear: formatear
+  formatear: formatear,
+  fixACTail: fixACTail,
+  readPathU: readPathU
 }
