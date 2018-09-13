@@ -25,7 +25,7 @@ app.on('ready', () => {
     minHeight: 650,
     center: true,
     show: false,
-    title: 'PCMCIA-DOWNLOADER'
+    title: 'Bird Strikes'
   })
 
   win.once('ready-to-show', () => {
