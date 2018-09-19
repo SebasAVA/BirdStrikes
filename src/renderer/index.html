@@ -17,8 +17,31 @@
               <li class="list-group-header">
                 <img  src="../assets/img/AvaLogo.png" width="70" height="70">
                 <p class="important">Bienvenido </p>
+
+
+
+
                 <!-- <input id="search-box" class="form-control" type="text" placeholder="Buscando imagen"> -->
               </li>
+              <h5 align="center" >Acciones</h5>
+              <div align="center">
+                <li >
+                <button id="upload-data" class="btn btn-default btn-large">
+                  <span class="icon icon-upload-cloud "></span>   Subir información   </button>
+                  </li>
+
+                </div>
+                <br>
+                <br>
+                <br>
+                <div align="center">
+
+                <li >
+                <button class="btn btn-default btn-large" onclick="myFunction()" >
+                    <span class="icon icon icon-cw" ></span>   Reset   </button>
+                </li>
+
+              </div>
                <!-- <li class="list-group-item selected">
                 <img class="img-circle media-object pull-left" src="../assets/img/B787.jpg" width="32" height="32">
                 <div class="media-body">
@@ -51,6 +74,8 @@
               </header>
               <h4>Complete toda la información necesaria en los siguientes campos.</h4>
               <!-- Seccion IRO -->
+              <form id="FormBS">
+
               <div class="form-group">
                 <label><b>Codigo IRO(AQD)</b></label>
                 <input type="text" class="form-control" placeholder="Codigo IRO">
@@ -85,13 +110,25 @@
              <!-- Seccion Fase -->
 
               <label><b>Fase</b></label>
-              <select class="form-control">
+              <select class="form-control" name="Fase">
                 <option>Approach</option>
                 <option>Take Off</option>
                 <option>Climb</option>
                 <option>En Ruta</option>
               </select>
 
+              <label><b>Quien Reportó</b></label>
+              <select class="form-control" name="QR">
+                <option>PILOTO</option>
+                <option>MANTENIMIENTO</option>
+                <option>Piloto y Mantenimiento</option>
+                <option>Personal de Tierra</option>
+              </select>
+
+              <div class="form-group">
+                <label><b>Ruta</b></label>
+                <input type="text" class="form-control" placeholder="Ej: BOG-CLO">
+              </div>
               <!-- Seccion Altura -->
 
               <label><b>Altura</b></label>
@@ -146,28 +183,207 @@
                 <option>51kts-100kts</option>
               </select>
 
+              <label><b>Consecuencias</b></label>
+              <select class="form-control">
+                <option>NINGUNA</option>
+                <option>REGRESO A PLATAFORMA</option>
+                <option>DESPEGUE ABORTADO</option>
+              </select>
+
+              <label><b>Nubosidad</b></label>
+              <select class="form-control">
+                <option>CIELO DESPEJADO</option>
+                <option>ALGUNAS NUBES</option>
+                <option>CIELO CUBIERTO</option>
+              </select>
+
+              <label><b>No Aves Observadas</b></label>
+              <select class="form-control">
+                <option>1</option>
+                <option>2-10</option>
+                <option>11-100</option>
+                <option>MÁS</option>
+              </select>
+
+              <label><b>No Aves Golpeadas</b></label>
+              <select class="form-control">
+                <option>1</option>
+                <option>2-10</option>
+                <option>11-100</option>
+                <option>MÁS</option>
+              </select>
+
+              <label><b>Precipitación</b></label>
+              <select class="form-control">
+                <option>NIEBLA</option>
+                <option>LLUVIA</option>
+                <option>GRANIZO</option>
+                <option>Indet</option>
+              </select>
+
+              <label><b>Tamaño Aves</b></label>
+              <select class="form-control">
+                <option>PEQUEÑAS</option>
+                <option>MEDIANAS</option>
+                <option>GRANDES</option>
+              </select>
+
+              <label><b>Avisado por ATC?</b></label>
+              <select class="form-control">
+                <option>SI</option>
+                <option>NO</option>
+              </select>
+
+              <label><b>Especie de Ave</b></label>
+              <input type="text" class="form-control" placeholder="Especie de Ave">
+
+              <label><b>Correo</b></label>
+              <input type="text" class="form-control" placeholder="Codigo">
+
+              <h2>Partes Golpeadas</h2>
+
+              <label><b>Radomo</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>PARABRISAS</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>MOTOR N1</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>MOTOR N2</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>MOTOR N3</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>MOTOR N4</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+
+              <label><b>HELICE</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>PLANOS</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>ROTORES</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>FUSELAJE</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>TREN DE ATERRIZAJE</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>ESTABILIZADOR VERTICAL</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>ESTABILIZADOR HORIZONTAL</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>LUCES</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>PITOS ESTATICOS</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <label><b>OTROS</b></label>
+              <select class="form-control">
+                <option>N/A</option>
+                <option>ND</option>
+                <option>DDL</option>
+                <option>DFL</option>
+              </select>
+
+              <div class="form-group">
+                <label>Observaciones</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+
+            </form>
               <!-- Seccion Pista -->
 
 
 
               <!-- Seccion IRO -->
-              <form>
-                <label><b>Parte Numero P/N</b></label>
-                <select class="form-control">
-                  <option>PCM-AFSE-MG01</option>
-                  <option>512MB PCMCIA</option>
-                  <option>189381028</option>
-                  <option>201584905-0101</option>
-                </select>
-                <div class="form-group">
-                  <label><b>Serie Numero S/N</b></label>
-                  <input type="text" class="form-control" placeholder="S/N">
-                </div>
-                <p>
-                </p>
-              </form>
-              <button id="upload-data" class="btn btn-default btn-large">
-                <span class="icon icon-upload-cloud "></span>   Subir información   </button>
+
+
                 <div id="ACTail">
 
                 </div>
@@ -204,6 +420,10 @@ function changeddl(obj) {
                 option.style.display = 'block'
         }
     }
+}
+
+function myFunction() {
+    document.getElementById("FormBS").reset();
 }
 </script>
 <!-- <script>
