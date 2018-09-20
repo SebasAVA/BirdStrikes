@@ -87,25 +87,27 @@
                        name="party-time" value="2018-06-12T19:30"
                        min="2017-06-07T00:00" max="2019-06-14T00:00" />
               </div>
-              <!-- Seccion Lugar del Evento -->
               <label><b>Lugar del Evento</b></label>
-              <select id="iFunction" name="nFunction" class="form-control" onchange="changeddl(this)">
-                    <option value="-1" selected="">Select…</option>
-                    <option value="1">BOG</option>
-                    <option value="2">CLO</option>
-                </select>
-              <!-- Seccion Pista -->
-
-              <label><b>Pista</b></label>
-              <select id="iOperation" class="form-control" name="nOperation">
-                  <option value="-1" selected="">Seleccione Pista…</option>
-                  <option value="1_21">13R</option>
-                  <option value="1_22">13L</option>
-                  <option value="1_23">31R</option>
-                  <option value="1_24">31L</option>
-                  <option value="2_21">01</option>
-                  <option value="2_22">19</option>
+              <select id="first-choice" class="form-control">
+                <option selected value="base">Please Select</option>
+                <option value="BOG">BOG</option>
+                <option value="AXM">AXM</option>
+                <option value="EJA">EJA</option>
+                <option value="BAQ">BAQ</option>
+                <option value="BGA">BGA</option>
+                <option value="CLO">CLO</option>
+                <option value="CTG">CTG</option>
+                <option value="MIA">MIA</option>
               </select>
+
+              <br>
+              <label><b>Seleccione Pista</b></label>
+              <select id="second-choice" class="form-control">
+                <option>Please choose from above</option>
+              </select>
+
+              <!-- Seccion Lugar del Evento -->
+
 
              <!-- Seccion Fase -->
 
@@ -401,8 +403,59 @@
   </div>
   </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" language="JavaScript">
 
-<script type="text/javascript">
+
+var $ = require("jquery");
+
+$("#first-choice").change(function() {
+
+	var $dropdown = $(this);
+
+	$.getJSON("  ../assets/jsondata/Air.json", function(data) {
+
+		var key = $dropdown.val();
+		var vals = [];
+		switch(key) {
+			case 'BOG':
+				vals = data.BOG.split(",");
+				break;
+			case 'AXM':
+				vals = data.AXM.split(",");
+				break;
+        case 'EJA':
+          vals = data.EJA.split(",");
+          break;
+          case 'BAQ':
+            vals = data.BAQ.split(",");
+            break;
+            case 'BGA':
+              vals = data.BGA.split(",");
+              break;
+              case 'CLO':
+                vals = data.CLO.split(",");
+                break;
+                case 'CTG':
+                  vals = data.CTG.split(",");
+                  break;
+                  case 'MIA':
+                    vals = data.MIA.split(",");
+                    break;
+			case 'base':
+				vals = ['Please choose from above'];
+		}
+
+		var $secondChoice = $("#second-choice");
+		$secondChoice.empty();
+		$.each(vals, function(index, value) {
+			$secondChoice.append("<option>" + value + "</option>");
+		});
+
+	});
+});
+
+
 function changeddl(obj) {
 
     var text = obj.options[obj.selectedIndex].text;
