@@ -1,12 +1,13 @@
 import url from 'url'
 import path from 'path'
 import applyFilter from './filters'
-import { setIpc, uploadData } from './ipcRendererEvents'
+import { setIpc, uploadData, docAerocivil } from './ipcRendererEvents'
 
 window.addEventListener('load', () => {
   setIpc()
   addImageEvents()
   buttonEvent('upload-data', uploadData)
+  buttonEvent('Aerocivil', docAerocivil)
 })
 
 

@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "cross-env": "^5.1.1",
+    "docxtemplater": "^3.9.0",
     "electron-compile": "^6.4.3",
     "electron-debug": "^1.4.0",
     "electron-progressbar": "^1.1.0",
@@ -22,6 +23,7 @@
     "filesize": "^3.6.0",
     "fs-extra": "^5.0.0",
     "jquery": "^3.3.1",
+    "jszip": "^2.6.1",
     "mssql": "^4.2.1",
     "mysql": "^2.16.0",
     "node-powershell": "^3.3.1",

@@ -107,6 +107,57 @@ function uploadData()
 
 }
 
+function docAerocivil(){
+  console.log("Aerocivil");
+  var JSZip = require('jszip');
+var Docxtemplater = require('docxtemplater');
+
+var fs = require('fs');
+var path = require('path');
+
+//Load the docx file as a binary
+var content = fs
+    .readFileSync(path.resolve(__dirname, '../assets/doc/Aerocivil.docx'), 'binary');
+
+var zip = new JSZip(content);
+
+var doc = new Docxtemplater();
+doc.loadZip(zip);
+
+//set the templateVariables
+var Formulario = document.getElementById("FormBS").elements;
+let fleet = Formulario[10].value;
+let Actail = Formulario[9].value;
+let Airline = Formulario[2].value;
+doc.setData({
+    Aerolinea: Airline,
+    Flota: fleet,
+    ACTail: Actail
+});
+
+try {
+    // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+    doc.render()
+}
+catch (error) {
+    var e = {
+        message: error.message,
+        name: error.name,
+        stack: error.stack,
+        properties: error.properties,
+    }
+    console.log(JSON.stringify({error: e}));
+    // The error thrown here contains additional information when logged with JSON.stringify (it contains a property object).
+    throw error;
+}
+
+var buf = doc.getZip()
+             .generate({type: 'nodebuffer'});
+
+// buf is a nodejs buffer, you can either write it to a file or do anything else with it.
+fs.writeFileSync(path.resolve(__dirname, '../assets/doc/output.docx'), buf);
+}
+
 
 function openDirectory(){
   ipcRenderer.send('open-directory')
@@ -114,36 +165,12 @@ function openDirectory(){
 
 
 
-function NewRead ()
-{
-  const StatusGUI = document.querySelector('#Status')
-  StatusGUI.innerHTML = '';
-  let files = [];
-  let NRFiles = [];
-  console.log(Unidad);
-  files = fs.readdirSync(Unidad)
-  for (var i = 0; i < files.length; i++) {
-    let filePath = path.join(Unidad,files[i])
-    console.log(filePath);
-    let stats = fs.statSync(filePath)
-    let size = filesize(stats.size,{round: 0})
-    NRFiles.push({filename: files[i] , src:filePath, size: size})
-  }
-   Archivos = [];
-   A32S = false;
-   A330 = false;
-   ATR = false;
-   EMR = false;
-   Finish = false;
-   let folderPath =  [Unidad]
-   clearFile();
-   cleaning(NRFiles, folderPath);
-   loadData(NRFiles);
-}
+
 
 
 
 module.exports = {
   setIpc: setIpc,
-  uploadData: uploadData
+  uploadData: uploadData,
+  docAerocivil: docAerocivil
 }
