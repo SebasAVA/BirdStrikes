@@ -30,7 +30,7 @@ function setIpc(){
 function uploadData()
 {
   var Formulario = document.getElementById("FormBS").elements;
-
+  console.log(Formulario);
   let NumOcu = Formulario[0].value;
   let LugOcu = Formulario[2].value;
   let NumAvesGol = Formulario[15].value;
@@ -48,7 +48,7 @@ function uploadData()
 
   var connection = new Connection(config);
      connection.on('connect', function(err) {
-         // If no error, then good to proceed.
+         // If no error, then good to proceed Formulario.radio.checked
          console.log("Connected");
          executeStatement();
      });
@@ -126,13 +126,188 @@ doc.loadZip(zip);
 
 //set the templateVariables
 var Formulario = document.getElementById("FormBS").elements;
+let Airline = Formulario[2].value;
 let fleet = Formulario[10].value;
 let Actail = Formulario[9].value;
-let Airline = Formulario[2].value;
+let day = Formulario[1].value.substring(8,10);
+let month = Formulario[1].value.substring(5,7);
+let year = Formulario[1].value.substring(2,4);
+let hour = Formulario[1].value.substring(11);
+let NoFlight = Formulario[11].value;
+
+let alba;
+let dia;
+let crep;
+let noche;
+
+switch (Formulario[12].value) {
+    case "DIA":
+        alba = "";
+        dia = "X";
+        crep = "";
+        noche = "";
+        break;
+    case "NOCHE":
+        alba = "";
+        dia = "";
+        crep = "";
+        noche = "X";
+        break;
+    case "CREPUSCULO":
+        alba = "";
+        dia = "";
+        crep = "X";
+        noche = "";
+        break;
+    case "ALBA":
+        alba = "X";
+        dia = "";
+        crep = "";
+        noche = "";
+        break;
+    case "Indet":
+        alba = "";
+        dia = "";
+        crep = "";
+        noche = "";
+        break;
+}
+
+let Airport = Formulario[3].value;
+let rwy = Formulario[4].value;
+let alt = Formulario[8].value;
+
+
+let findet, frod, fdes, fasc, fcru, fde, fap, fat, fre;
+
+switch (Formulario[5].value) {
+    case "Indeterminada":
+        findet = "X";
+        frod = "";
+        fdes = "";
+        fasc = "";
+        fcru = "";
+        fde = "";
+        fap = "";
+        fat = "";
+        fre = "";
+        break;
+        case "Rodaje":
+            findet = "";
+            frod = "X";
+            fdes = "";
+            fasc = "";
+            fcru = "";
+            fde = "";
+            fap = "";
+            fat = "";
+            fre = "";
+            break;
+            case "Despegue":
+                findet = "";
+                frod = "";
+                fdes = "X";
+                fasc = "";
+                fcru = "";
+                fde = "";
+                fap = "";
+                fat = "";
+                fre = "";
+                break;
+                case "En Ruta":
+                    findet = "";
+                    frod = "";
+                    fdes = "";
+                    fasc = "";
+                    fcru = "X";
+                    fde = "";
+                    fap = "";
+                    fat = "";
+                    fre = "";
+                    break;
+                    case "Ascenso":
+                        findet = "";
+                        frod = "";
+                        fdes = "";
+                        fasc = "X";
+                        fcru = "";
+                        fde = "";
+                        fap = "";
+                        fat = "";
+                        fre = "";
+                        break;
+                        case "Descenso":
+                            findet = "";
+                            frod = "";
+                            fdes = "";
+                            fasc = "";
+                            fcru = "";
+                            fde = "X";
+                            fap = "";
+                            fat = "";
+                            fre = "";
+                            break;
+                            case "Aproximacion":
+                                findet = "";
+                                frod = "";
+                                fdes = "";
+                                fasc = "";
+                                fcru = "";
+                                fde = "";
+                                fap = "X";
+                                fat = "";
+                                fre = "";
+                                break;
+                                case "Aterrizaje":
+                                    findet = "";
+                                    frod = "";
+                                    fdes = "";
+                                    fasc = "";
+                                    fcru = "";
+                                    fde = "";
+                                    fap = "";
+                                    fat = "X";
+                                    fre = "";
+                                    break;
+                                    case "Remolque":
+                                        findet = "";
+                                        frod = "";
+                                        fdes = "";
+                                        fasc = "";
+                                        fcru = "";
+                                        fde = "";
+                                        fap = "";
+                                        fat = "";
+                                        fre = "X";
+                                        break;
+}
+
+
 doc.setData({
     Aerolinea: Airline,
     Flota: fleet,
-    ACTail: Actail
+    ACTail: Actail,
+    ia: day,
+    is: month,
+    ir: year,
+    Hora: hour,
+    NoVuelo: NoFlight,
+    Alba: alba,
+    Dia: dia,
+    Crep: crep,
+    Noch: noche,
+    Aeropuerto: Airport,
+    Pista: rwy,
+    Altitud: alt,
+    fIdet:findet,
+    fRod:frod,
+    fDes:fdes,
+    fAsc:fasc,
+    fCru:fcru,
+    fde:fde,
+    fap:fap,
+    fAt:fat,
+    fre:fre
 });
 
 try {

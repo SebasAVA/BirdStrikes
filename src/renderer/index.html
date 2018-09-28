@@ -132,10 +132,15 @@
 
               <label><b>Fase</b></label>
               <select class="form-control" name="Fase">
-                <option>Approach</option>
-                <option>Take Off</option>
-                <option>Climb</option>
+                <option>Indeterminada</option>
+                <option>Rodaje</option>
+                <option>Despegue</option>
                 <option>En Ruta</option>
+                <option>Ascenso</option>
+                <option>Descenso</option>
+                <option>Aproximacion</option>
+                <option>Aterrizaje</option>
+                <option>Remolque</option>
               </select>
 
               <label><b>Quien Reportó</b></label>
@@ -193,6 +198,8 @@
                 <option>DIA</option>
                 <option>NOCHE</option>
                 <option>ALBA</option>
+                <option>CREPUSCULO</option>
+                <option>Indet</option>
               </select>
 
               <!-- Seccion Daño -->
@@ -272,134 +279,244 @@
 
               <h2>Partes Golpeadas</h2>
 
+
+
+
               <label><b>Radomo</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Radomo" id="RadomoNA" value="N/A"/>
+              <label for="NA">N/A</label>
 
+              <input type="radio" name="Radomo" id="RadomoND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Radomo" id="RadomoDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Radomo" id="RadomoDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
               <label><b>PARABRISAS</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Parabrisas" id="ParaBNA" value="N/A"/>
+              <label for="NA">N/A</label>
 
+              <input type="radio" name="Parabrisas" id="ParaBND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Parabrisas" id="ParaBDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Parabrisas" id="ParaBDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
               <label><b>MOTOR N1</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Motor1" id="Motor1NA" value="N/A"/>
+              <label for="NA">N/A</label>
 
+              <input type="radio" name="Motor1" id="Motor1ND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Motor1" id="Motor1DDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Motor1" id="Motor1DFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
               <label><b>MOTOR N2</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Motor2" id="Motor2NA" value="N/A"/>
+              <label for="NA">N/A</label>
 
+              <input type="radio" name="Motor2" id="Motor2ND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Motor2" id="Motor2DDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Motor2" id="Motor2DFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
               <label><b>MOTOR N3</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Motor3" id="Motor3NA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="Motor3" id="Motor3ND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Motor3" id="Motor3DDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Motor3" id="Motor3DFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>MOTOR N4</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Motor4" id="Motor4NA" value="N/A"/>
+              <label for="NA">N/A</label>
 
+              <input type="radio" name="Motor4" id="Motor4ND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Motor4" id="Motor4DDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Motor4" id="Motor4DFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>HELICE</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Helice" id="HeliceNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="Helice" id="HeliceND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Helice" id="HeliceDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Helice" id="HeliceDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>PLANOS</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Planos" id="PlanosNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="Planos" id="PlanosND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Planos" id="PlanosDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Planos" id="PlanosDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>ROTORES</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Rotores" id="RotoresNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="Rotores" id="RotoresND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Rotores" id="RotoresDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Rotores" id="RotoresDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>FUSELAJE</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Fuselaje" id="FuselajeNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="Fuselaje" id="FuselajeND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Fuselaje" id="FuselajeDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Fuselaje" id="FuselajeDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>TREN DE ATERRIZAJE</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="TrenAte" id="TrenAteNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="TrenAte" id="TrenAteND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="TrenAte" id="TrenAteDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="TrenAte" id="TrenAteDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>ESTABILIZADOR VERTICAL</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="EstabVer" id="EstabVerNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="EstabVer" id="EstabVerND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="EstabVer" id="EstabVerDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="EstabVer" id="EstabVerDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>ESTABILIZADOR HORIZONTAL</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="EstabHor" id="EstabHorNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="EstabHor" id="EstabHorND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="EstabHor" id="EstabHorDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="EstabHor" id="EstabHorDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>LUCES</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Luces" id="LucesNA" value="N/A"/>
+              <label for="NA">N/A</label>
 
-              <label><b>PITOS ESTATICOS</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <input type="radio" name="Luces" id="LucesND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Luces" id="LucesDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Luces" id="LucesDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
+
+              <label><b>PITOT ESTATICOS</b></label>
+              <br>
+              <input type="radio" name="PitotEst" id="PitotEstNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="PitotEst" id="PitotEstND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="PitotEst" id="PitotEstDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="PitotEst" id="PitotEstDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <label><b>OTROS</b></label>
-              <select class="form-control">
-                <option>N/A</option>
-                <option>ND</option>
-                <option>DDL</option>
-                <option>DFL</option>
-              </select>
+              <br>
+              <input type="radio" name="Otros" id="OtrosNA" value="N/A"/>
+              <label for="NA">N/A</label>
+
+              <input type="radio" name="Otros" id="OtrosND" value="ND"/>
+              <label for="ND">ND</label>
+
+              <input type="radio" name="Otros" id="OtrosDDL" value="DDL"/>
+              <label for="DDL">DDL</label>
+
+              <input type="radio" name="Otros" id="OtrosDFL" value="DFL"/>
+              <label for="DFL">DFL</label>
+              <br>
 
               <div class="form-group">
                 <label>Observaciones</label>
