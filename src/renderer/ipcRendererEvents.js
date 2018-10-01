@@ -25,7 +25,12 @@ function setIpc(){
   })
 }
 
-
+function sendemail()
+{
+  console.log("EMail");
+ var cmd=require('node-cmd');
+ cmd.run('start outlook /c ipm.note /m "someone@microsoft.com&subject=test%20subject&body=test%20body" /a C:/Users/jsrojasa/Documents/BirdStrikes/src/assets/doc/output.docx');
+}
 
 function uploadData()
 {
@@ -347,5 +352,6 @@ function openDirectory(){
 module.exports = {
   setIpc: setIpc,
   uploadData: uploadData,
-  docAerocivil: docAerocivil
+  docAerocivil: docAerocivil,
+  sendemail: sendemail
 }
