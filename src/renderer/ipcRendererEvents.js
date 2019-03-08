@@ -27,9 +27,13 @@ function setIpc(){
 
 function sendemail()
 {
-  console.log("EMail");
+  console.log("Email");
  var cmd=require('node-cmd');
- cmd.run('start outlook /c ipm.note /m "someone@microsoft.com&subject=test%20subject&body=test%20body" /a C:/Users/jsrojasa/Documents/BirdStrikes/src/assets/doc/output.docx');
+ var line1 = 'start outlook /c ipm.note /m "someone@microsoft.com&subject=test%20subject&body=test%20body" /a '
+ var line2 = String(path.resolve(__dirname, '../assets/doc/output.docx'));
+ var command = line1.concat(line2);
+ console.log(command);
+ cmd.run(command);
 }
 
 function uploadData()
@@ -287,7 +291,54 @@ switch (Formulario[5].value) {
                                         break;
 }
 
+let RadNA,RadND,RadDDL,RadDFL,ParaNA,ParaND,ParaDDL,ParaDFL;
 
+switch (Formulario.Radomo.value){
+  case "N/A":
+  RadND = "";
+  RadDDL = "";
+  RadDFL = "";
+  break;
+  case "ND":
+  RadND = "X";
+  RadDDL = "";
+  RadDFL = "";
+  break;
+  case "DDL":
+  RadND = "";
+  RadDDL = "X";
+  RadDFL = "";
+  break;
+  case "DFL":
+  RadND = "";
+  RadDDL = "";
+  RadDFL = "X";
+  break;
+}
+switch (Formulario.Parabrisas.value){
+  case "N/A":
+  ParaND = "";
+  ParaDDL = "";
+  ParaDFL = "";
+  break;
+  case "ND":
+  ParaND = "X";
+  ParaDDL = "";
+  ParaDFL = "";
+  break;
+  case "DDL":
+  ParaND = "";
+  ParaDDL = "X";
+  ParaDFL = "";
+  break;
+  case "DFL":
+  ParaND = "";
+  ParaDDL = "";
+  ParaDFL = "X";
+  break;
+}
+
+sd
 doc.setData({
     Aerolinea: Airline,
     Flota: fleet,
@@ -312,7 +363,13 @@ doc.setData({
     fde:fde,
     fap:fap,
     fAt:fat,
-    fre:fre
+    fre:fre,
+    rnd:RadND,
+    rddl:RadDDL,
+    rdfl:RadDFL,
+    pnd:ParaND,
+    pddl:ParaDDL,
+    pdf:ParaDFL
 });
 
 try {
