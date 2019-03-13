@@ -182,6 +182,50 @@ switch (Formulario[12].value) {
         break;
 }
 
+let NI, CRP, CAB, CEP, CRI, CRE, CRP, CRU, CPC, GPW, TCAS, INES, GOA;
+
+switch (Formulario[15].value) {
+    case "DIA":
+        NI;
+        CRP;
+        CAB;
+        CEP;
+        CRI;
+        CRE; 
+        CRP;
+        CRU;
+        CPC;
+        GPW;
+        TCAS;
+        INES;
+        GOA;
+        break;
+    case "NOCHE":
+        alba = "";
+        dia = "";
+        crep = "";
+        noche = "X";
+        break;
+    case "CREPUSCULO":
+        alba = "";
+        dia = "";
+        crep = "X";
+        noche = "";
+        break;
+    case "ALBA":
+        alba = "X";
+        dia = "";
+        crep = "";
+        noche = "";
+        break;
+    case "Indet":
+        alba = "";
+        dia = "";
+        crep = "";
+        noche = "";
+        break;
+}
+
 let Airport = Formulario[3].value;
 let rwy = Formulario[4].value;
 let alt = Formulario[8].value;
@@ -292,7 +336,9 @@ switch (Formulario[5].value) {
 }
 
 let RadNA,RadND,RadDDL,RadDFL,ParaNA,ParaND,ParaDDL,ParaDFL;
-
+let NDUNO, DDLUNO, DFLUNO, NDDOS, DDLDOS, DFLDOS, NDTRES, DDLTRES, DFLTRES, NDCUA, DDLCUA, DFLCUA;
+let HND,HDDL,HDFL,PLND,PLDDL,PLDFL,ROND,RODDL,RODFL,FUND,FUDDL,FUDFL,TND,TDDL,TDFL;
+let EVND,EVDDL,EVDFL,EHND,EHDDL,EHDFL,LND,LDDL,LDFL,PEND,PEDDL,PEDFL,OND,ODDL,ODFL;
 switch (Formulario.Radomo.value){
   case "N/A":
   RadND = "";
@@ -337,8 +383,315 @@ switch (Formulario.Parabrisas.value){
   ParaDFL = "X";
   break;
 }
+switch (Formulario.Motor1.value){
+  case "N/A":
+  NDUNO = "";
+  DDLUNO = "";
+  DFLUNO = "";
+  break;
+  case "ND":
+  NDUNO = "X";
+  DDLUNO = "";
+  DFLUNO = "";
+  break;
+  case "DDL":
+  NDUNO = "";
+  DDLUNO = "X";
+  DFLUNO = "";
+  break;
+  case "DFL":
+  NDUNO = "";
+  DDLUNO = "";
+  DFLUNO = "X";
+  break;
+}
+switch (Formulario.Motor2.value){
+  case "N/A":
+  NDDOS = "";
+  DDLDOS = "";
+  DFLDOS = "";
+  break;
+  case "ND":
+  NDDOS = "X";
+  DDLDOS = "";
+  DFLDOS = "";
+  break;
+  case "DDL":
+  NDDOS = "";
+  DDLDOS = "X";
+  DFLDOS = "";
+  break;
+  case "DFL":
+  NDDOS = "";
+  DDLDOS = "";
+  DFLDOS = "X";
+  break;
+}
+switch (Formulario.Motor3.value){
+  case "N/A":
+  NDTRES = "";
+  DDLTRES = "";
+  DFLTRES = "";
+  break;
+  case "ND":
+  NDTRES = "X";
+  DDLTRES = "";
+  DFLTRES = "";
+  break;
+  case "DDL":
+  NDTRES = "";
+  DDLTRES = "X";
+  DFLTRES = "";
+  break;
+  case "DFL":
+  NDTRES = "";
+  DDLTRES = "";
+  DFLTRES = "X";
+  break;
+}
+switch (Formulario.Motor4.value){
+  case "N/A":
+  NDCUA = "";
+  DDLCUA = "";
+  DFLCUA = "";
+  break;
+  case "ND":
+  NDCUA = "X";
+  DDLCUA = "";
+  DFLCUA = "";
+  break;
+  case "DDL":
+  NDCUA = "";
+  DDLCUA = "X";
+  DFLCUA = "";
+  break;
+  case "DFL":
+  NDCUA = "";
+  DDLCUA = "";
+  DFLCUA = "X";
+  break;
+}
+switch (Formulario.Helice.value){
+  case "N/A":
+  HND = "";
+  HDDL = "";
+  HDFL = "";
+  break;
+  case "ND":
+  HND = "X";
+  HDDL = "";
+  HDFL = "";
+  break;
+  case "DDL":
+  HND = "";
+  HDDL = "X";
+  HDFL = "";
+  break;
+  case "DFL":
+  HND = "";
+  HDDL = "";
+  HDFL = "X";
+  break;
+}
+switch (Formulario.Planos.value){
+  case "N/A":
+  PLND = "";
+  PLDDL = "";
+  PLDFL = "";
+  break;
+  case "ND":
+  PLND = "X";
+  PLDDL = "";
+  PLDFL = "";
+  break;
+  case "DDL":
+  PLND = "";
+  PLDDL = "X";
+  PLDFL = "";
+  break;
+  case "DFL":
+  PLND = "";
+  PLDDL = "";
+  PLDFL = "X";
+  break;
+}
+switch (Formulario.Rotores.value){
+  case "N/A":
+  ROND = "";
+  RODDL= "";
+  RODFL= "";
+  break;
+  case "ND":
+  ROND = "X";
+  RODDL= "";
+  RODFL= "";
+  break;
+  case "DDL":
+  ROND = "";
+  RODDL= "X";
+  RODFL= "";
+  break;
+  case "DFL":
+  ROND = "";
+  RODDL= "";
+  RODFL= "X";
+  break;
+}
+switch (Formulario.Fuselaje.value){
+  case "N/A":
+  FUND = "";
+  FUDDL= "";
+  FUDFL= "";
+  break;
+  case "ND":
+  FUND = "X";
+  FUDDL= "";
+  FUDFL= "";
+  break;
+  case "DDL":
+  FUND = "";
+  FUDDL= "X";
+  FUDFL= "";
+  break;
+  case "DFL":
+  FUND = "";
+  FUDDL= "";
+  FUDFL= "X";
+  break;
+}
+switch (Formulario.TrenAte.value){
+  case "N/A":
+  TND = "";
+  TDDL= "";
+  TDFL= "";
+  break;
+  case "ND":
+  TND = "X";
+  TDDL= "";
+  TDFL= "";
+  break;
+  case "DDL":
+  TND = "";
+  TDDL= "X";
+  TDFL= "";
+  break;
+  case "DFL":
+  TND = "";
+  TDDL= "";
+  TDFL= "X";
+  break;
+}
+switch (Formulario.EstabVer.value){
+  case "N/A":
+  EVND = "";
+  EVDDL= "";
+  EVDFL= "";
+  break;
+  case "ND":
+  EVND = "X";
+  EVDDL= "";
+  EVDFL= "";
+  break;
+  case "DDL":
+  EVND = "";
+  EVDDL= "X";
+  EVDFL= "";
+  break;
+  case "DFL":
+  EVND = "";
+  EVDDL= "";
+  EVDFL= "X";
+  break;
+}
+switch (Formulario.EstabHor.value){
+  case "N/A":
+  EHND = "";
+  EHDDL= "";
+  EHDFL= "";
+  break;
+  case "ND":
+  EHND = "X";
+  EHDDL= "";
+  EHDFL= "";
+  break;
+  case "DDL":
+  EHND = "";
+  EHDDL= "X";
+  EHDFL= "";
+  break;
+  case "DFL":
+  EHND = "";
+  EHDDL= "";
+  EHDFL= "X";
+  break;
+}
+switch (Formulario.Luces.value){
+  case "N/A":
+  LND = "";
+  LDDL= "";
+  LDFL= "";
+  break;
+  case "ND":
+  LND = "X";
+  LDDL= "";
+  LDFL= "";
+  break;
+  case "DDL":
+  LND = "";
+  LDDL= "X";
+  LDFL= "";
+  break;
+  case "DFL":
+  LND = "";
+  LDDL= "";
+  LDFL= "X";
+  break;
+}
+switch (Formulario.PitotEst.value){
+  case "N/A":
+  PEND = "";
+  PEDDL= "";
+  PEDFL= "";
+  break;
+  case "ND":
+  PEND = "X";
+  PEDDL= "";
+  PEDFL= "";
+  break;
+  case "DDL":
+  PEND = "";
+  PEDDL= "X";
+  PEDFL= "";
+  break;
+  case "DFL":
+  PEND = "";
+  PEDDL= "";
+  PEDFL= "X";
+  break;
+}
+switch (Formulario.Otros.value){
+  case "N/A":
+  OND = "";
+  ODDL= "";
+  ODFL= "";
+  break;
+  case "ND":
+  OND = "X";
+  ODDL= "";
+  ODFL= "";
+  break;
+  case "DDL":
+  OND = "";
+  ODDL= "X";
+  ODFL= "";
+  break;
+  case "DFL":
+  OND = "";
+  ODDL= "";
+  ODFL= "X";
+  break;
+}
 
-sd
 doc.setData({
     Aerolinea: Airline,
     Flota: fleet,
@@ -369,7 +722,49 @@ doc.setData({
     rdfl:RadDFL,
     pnd:ParaND,
     pddl:ParaDDL,
-    pdf:ParaDFL
+    pdf:ParaDFL,
+    und: NDUNO,
+    uddl: DDLUNO,
+    udf: DFLUNO,
+    dnd: NDDOS,
+    dddl: DDLDOS,
+    ddf: DFLDOS,
+    trnd: NDTRES,
+    trddl: DDLTRES,
+    trdf: DFLTRES,
+    cnd: NDCUA,
+    cddl: DDLCUA,
+    cdf: DFLCUA,
+    hnd: HND,
+    hddl: HDDL,
+    hdf: HDFL,
+    plnd: PLND,
+    plddl: PLDDL,
+    pld: PLDFL,
+    rond: ROND,
+    roddl: RODDL,
+    rdf: RODFL,
+    fund: FUND,
+    fuddl: FUDDL,
+    fud: FUDFL,
+    tnd: TND,
+    tddl: TDDL,
+    tdf: TDFL,
+    evnd: EVND,
+    evdd: EVDDL,
+    efl: EVDFL,
+    ehnv: EHND,
+    ehdd: EHDDL,
+    ehd: EHDFL,
+    lnd: LND,
+    lddl: LDDL,
+    ldf: LDFL,
+    pend: PEND,
+    ped: PEDDL,
+    pef: PEDFL,
+    ond: OND,
+    oddl: ODDL,
+    odf: ODFL
 });
 
 try {
